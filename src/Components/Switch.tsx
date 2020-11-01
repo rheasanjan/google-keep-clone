@@ -6,11 +6,11 @@ interface SwitchComponentProps extends SwitchProps {
     label?: string,
 }
 const Switch = (props:SwitchComponentProps) => {
-    const {label} = props
+    const {label, ...restProps} = props
     return (
         <FormControlLabel
         control=
-        {<MuiSwitch color="secondary" />}
+        {<MuiSwitch color="secondary" {...restProps} />}
         label={label}
         />
     )

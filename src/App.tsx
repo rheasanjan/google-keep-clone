@@ -1,28 +1,45 @@
-import { ThemeProvider } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from "react";
 
-import { BrowserRouter, Switch, Route, } from 'react-router-dom';
-import './App.css';
-import Header from './Components/Header';
-import Home from './Pages/Home';
-import { theme } from './Theme';
+import { ThemeProvider } from "@material-ui/core";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import styled from "styled-components";
+import "./App.css";
+import Header from "./Components/Header";
+import Home from "./Pages/Home";
+import { setTheme } from "./Theme";
+import { ThemeTypes } from "./types";
+
+type AppProps = {
+  background: string;
+};
+
+const StyledApp = styled.div`
+  ${(props: AppProps) => `{
+  background: ${props.background};
+  height: 100vh;
+}`}
+`;
 
 function App() {
+  const [themeType, setThemeType] = useState(ThemeTypes.light);
+
+  const theme = setTheme(themeType);
+
   return (
     <ThemeProvider theme={theme}>
-    <BrowserRouter>
-    <div>
-      <Header />
-  
-      <Switch>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-      </Switch>
-    </div>
-    </BrowserRouter>
+      <BrowserRouter>
+        <StyledApp background={theme.palette.background.default}>
+          <Header setTheme={setThemeType} theme={themeType} />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </StyledApp>
+      </BrowserRouter>
     </ThemeProvider>
-  )
+  );
 }
 
 export default App;
