@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { ThemeProvider } from "@material-ui/core";
+import { ThemeProvider, Box } from "@material-ui/core";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import styled from "styled-components";
@@ -31,11 +31,13 @@ function App() {
       <BrowserRouter>
         <StyledApp background={theme.palette.background.default}>
           <Header setTheme={setThemeType} theme={themeType} />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-          </Switch>
+          <Box pt="5rem">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </Box>
         </StyledApp>
       </BrowserRouter>
     </ThemeProvider>

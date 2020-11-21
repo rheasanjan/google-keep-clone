@@ -7,6 +7,9 @@ export enum LightTheme {
   secondary = "#feefc3",
   border = "#DADCE0",
   textboxBackground = "#F1F3F4",
+  icons = "#757575",
+  noteShadow = "#C0C1C2",
+  noteBorder = "#E0E0E0",
 }
 
 export enum DarkTheme {
@@ -15,6 +18,8 @@ export enum DarkTheme {
   border = "#5F6368",
   secondary = "#41331C",
   textboxBackground = "#535456",
+  icons = "#98989A",
+  noteBorder = "#5F6368",
 }
 
 export enum FontSize {
