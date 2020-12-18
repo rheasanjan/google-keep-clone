@@ -1,18 +1,15 @@
-import React from 'react'
-import MuiSwitch, {SwitchProps} from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import React from "react"
+
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import MuiSwitch, { SwitchProps } from "@material-ui/core/Switch"
 
 interface SwitchComponentProps extends SwitchProps {
-    label?: string,
+    label?: string
 }
-const Switch = (props:SwitchComponentProps) => {
-    const {label, ...restProps} = props
+const Switch = (props: SwitchComponentProps) => {
+    const { label, ...restProps } = props
     return (
-        <FormControlLabel
-        control=
-        {<MuiSwitch color="secondary" {...restProps} />}
-        label={label}
-        />
+        <FormControlLabel control={<MuiSwitch color="secondary" {...restProps} />} label={label} />
     )
 }
 

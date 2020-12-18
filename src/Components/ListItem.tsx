@@ -8,9 +8,15 @@ import { LightTheme } from "../Theme"
 
 const StyledNote = styled.div`
     width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 0 1%;
     border: 1px solid ${LightTheme.NoteBorder};
     border-radius: 5px;
+    .title-input {
+        width: 100%;
+    }
 `
 
 type NewNoteProps = {
@@ -20,10 +26,10 @@ type NewNoteProps = {
 const NewNote = (props: NewNoteProps) => {
     const { handleCheckbox, isChecklist } = props
     return (
-        <StyledNote className="d-flex justify-content-between align-items-center">
+        <StyledNote className="">
             <InputBase
                 placeholder={isChecklist ? "Title" : "Take a note..."}
-                className="w-100"
+                className="title-input"
             />
             {isChecklist ? (
                 <Checkbox icon={<EmojiObjectsOutlinedIcon />} checkedIcon={<EmojiObjectsIcon />} />

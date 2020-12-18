@@ -1,17 +1,17 @@
-import React from "react";
+import React from "react"
 
-import { AppBar, Avatar, Toolbar, Typography } from "@material-ui/core";
-import { SearchOutlined } from "@material-ui/icons";
-import styled from "styled-components";
+import { AppBar, Avatar, Toolbar, Typography } from "@material-ui/core"
+import { SearchOutlined } from "@material-ui/icons"
+import styled from "styled-components"
 
-import Logo from "../assets/logo.png";
-import { DarkTheme, LightTheme } from "../Theme";
-import { ThemeTypes } from "../types";
-import Searchbar from "./Searchbar";
-import Switch from "./Switch";
+import Logo from "../assets/logo.png"
+import { DarkTheme, LightTheme } from "../Theme"
+import { ThemeTypes } from "../types"
+import Searchbar from "./Searchbar"
+import Switch from "./Switch"
 
 const StyledAppBar = styled(AppBar)`
-  ${({ theme }) => `
+    ${({ theme }) => `
     width: 100%;
     padding: 5px 0;
     .d-flex-between {
@@ -36,9 +36,7 @@ const StyledAppBar = styled(AppBar)`
         display: flex;
         align-items: center;
         background: ${
-          theme === ThemeTypes.Light
-            ? LightTheme.TextboxBackground
-            : DarkTheme.TextboxBackground
+            theme === ThemeTypes.Light ? LightTheme.TextboxBackground : DarkTheme.TextboxBackground
         };
     }
     && {
@@ -47,43 +45,39 @@ const StyledAppBar = styled(AppBar)`
     }
 
 `}
-`;
+`
 
 type HeaderPropType = {
-  setTheme: (theme: ThemeTypes) => void;
-  theme: ThemeTypes;
-};
+    setTheme: (theme: ThemeTypes) => void
+    theme: ThemeTypes
+}
 
 const Header = (props: HeaderPropType) => {
-  const { theme, setTheme } = props;
+    const { theme, setTheme } = props
 
-  const handleThemeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTheme(e.target.checked ? ThemeTypes.Dark : ThemeTypes.Light);
-  };
+    const handleThemeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTheme(e.target.checked ? ThemeTypes.Dark : ThemeTypes.Light)
+    }
 
-  return (
-    <StyledAppBar theme={theme} position="fixed" color="primary">
-      <Toolbar className="d-flex-between">
-        <section className="d-flex">
-          <img src={Logo} alt="logo" className="header__logo" />
-          <Typography
-            variant="h2"
-            color="textPrimary"
-            className="align-self-center"
-          >
-            Keep
-          </Typography>
-        </section>
-        <section className="header__search">
-          <SearchOutlined className="mr-2" />
-          <Searchbar />
-        </section>
-        <section className="d-flex">
-          <Switch label="Dark mode" onChange={handleThemeChange} />
-          <Avatar />
-        </section>
-      </Toolbar>
-    </StyledAppBar>
-  )
-};
-export default Header;
+    return (
+        <StyledAppBar theme={theme} position="fixed" color="primary">
+            <Toolbar className="d-flex-between">
+                <section className="d-flex">
+                    <img src={Logo} alt="logo" className="header__logo" />
+                    <Typography variant="h2" color="textPrimary" className="align-self-center">
+                        Keep
+                    </Typography>
+                </section>
+                <section className="header__search">
+                    <SearchOutlined className="mr-2" />
+                    <Searchbar />
+                </section>
+                <section className="d-flex">
+                    <Switch label="Dark mode" onChange={handleThemeChange} />
+                    <Avatar />
+                </section>
+            </Toolbar>
+        </StyledAppBar>
+    )
+}
+export default Header
