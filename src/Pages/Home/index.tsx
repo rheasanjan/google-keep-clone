@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import NewNote from '../../Components/NewNote';
 
@@ -8,10 +8,12 @@ padding-top: 4rem;
 `
 
 const Home:React.FC = () => {
+
+    const [isChecklist, setIsChecklist] = useState(false)
     return (
         <HomeContainer> 
             <section className="new-note">
-            <NewNote />          
+            <NewNote isChecklist={isChecklist} handleCheckbox={setIsChecklist}/>          
             </section>
         </HomeContainer>
     )

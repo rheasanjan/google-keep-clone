@@ -36,14 +36,14 @@ const StyledAppBar = styled(AppBar)`
         display: flex;
         align-items: center;
         background: ${
-          theme === ThemeTypes.light
-            ? LightTheme.textboxBackground
-            : DarkTheme.textboxBackground
+          theme === ThemeTypes.Light
+            ? LightTheme.TextboxBackground
+            : DarkTheme.TextboxBackground
         };
     }
     && {
         box-shadow: none;
-        border-bottom: 1px solid ${LightTheme.border};
+        border-bottom: 1px solid ${LightTheme.Border};
     }
 
 `}
@@ -58,7 +58,7 @@ const Header = (props: HeaderPropType) => {
   const { theme, setTheme } = props;
 
   const handleThemeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTheme(e.target.checked ? ThemeTypes.dark : ThemeTypes.light);
+    setTheme(e.target.checked ? ThemeTypes.Dark : ThemeTypes.Light);
   };
 
   return (
