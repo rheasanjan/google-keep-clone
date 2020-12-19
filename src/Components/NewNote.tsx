@@ -4,11 +4,13 @@ import EmojiObjectsOutlinedIcon from "@material-ui/icons/EmojiObjectsOutlined"
 import EmojiObjectsIcon from "@material-ui/icons/EmojiObjects"
 import React from "react"
 import styled from "styled-components"
+
+import ListItem from "./ListItem"
 import { LightTheme } from "../Theme"
+import { ListItemType } from "../types"
 
 const StyledNote = styled.div`
     width: 50%;
-    padding: 0 1%;
     border: 1px solid ${LightTheme.NoteBorder};
     border-radius: 5px;
 `
@@ -16,14 +18,33 @@ const StyledNote = styled.div`
 type NewNoteProps = {
     isChecklist: Boolean
     handleCheckbox: (value: boolean) => void
+    title: string
+    setTitle: (value: string) => void
+    listItems: ListItemType[] 
+    setListItems: (value: ListItemType[]) => void
 }
 const NewNote = (props: NewNoteProps) => {
-    const { handleCheckbox, isChecklist } = props
+    const { handleCheckbox, isChecklist, title, setTitle, listItems, setListItems } = props
+
+    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => { 
+      setTitle(e.target.value)
+    }
+
+    const handleListItemChange = (index: number, key: keyof ListItemType, value: string | boolean) => {
+      const listItemsCopy = [...listItems]
+      const itemVal = {...listItemsCopy[index]}
+      listItemsCopy[index] = {...itemVal, [key]: value }
+      setListItems([...listItemsCopy])
+    }
+
     return (
-        <StyledNote className="d-flex justify-content-between align-items-center">
+        <StyledNote>
+          <section  className="d-flex justify-content-between align-items-center px-3">
             <InputBase
                 placeholder={isChecklist ? "Title" : "Take a note..."}
                 className="w-100"
+                value={title}
+                onChange={handleTitleChange}
             />
             {isChecklist ? (
                 <Checkbox icon={<EmojiObjectsOutlinedIcon />} checkedIcon={<EmojiObjectsIcon />} />
@@ -33,6 +54,9 @@ const NewNote = (props: NewNoteProps) => {
                     checked={isChecklist}
                 />
             )}
+            </section>
+            {isChecklist && 
+            (listItems.map((listItem,i) => <ListItem index={i} item={listItem} handleChange={handleListItemChange}/>))}
         </StyledNote>
     )
 }

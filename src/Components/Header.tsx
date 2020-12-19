@@ -14,16 +14,6 @@ const StyledAppBar = styled(AppBar)`
     ${({ theme }) => `
     width: 100%;
     padding: 5px 0;
-    .d-flex-between {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .d-flex {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
     .header__logo {
         height: 40px;
         width: 40px;
@@ -61,8 +51,8 @@ const Header = (props: HeaderPropType) => {
 
     return (
         <StyledAppBar theme={theme} position="fixed" color="primary">
-            <Toolbar className="d-flex-between">
-                <section className="d-flex">
+            <Toolbar className="d-flex justify-content-between align-items-center">
+                <section className="d-flex justify-content-around align-items-center">
                     <img src={Logo} alt="logo" className="header__logo" />
                     <Typography variant="h2" color="textPrimary" className="align-self-center">
                         Keep
