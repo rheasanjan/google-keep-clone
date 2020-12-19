@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useMemo } from "react"
 
 import { ThemeProvider, Box } from "@material-ui/core"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
@@ -24,7 +24,7 @@ const StyledApp = styled.div`
 function App() {
     const [themeType, setThemeType] = useState(ThemeTypes.Light)
 
-    const theme = setTheme(themeType)
+    const theme = useMemo(() => setTheme(themeType), [themeType])
 
     return (
         <ThemeProvider theme={theme}>
